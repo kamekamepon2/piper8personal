@@ -4,8 +4,13 @@ import RPi.GPIO as GPIO
 import time
 import pika
 import json
+import sys
+
+args = sys.argv
+
 #RabbitMQIP='192.168.80.91'
-RabbitMQIP='localhost'
+#RabbitMQIP='localhost'
+RabbitMQIP=args[1]
 
 Trigger = 16
 Echo = 18
