@@ -12,7 +12,7 @@ spec:
       app: p8pod
     spec:
       containers:
-      - image: kamekamepon2/piper8container:0.1
+      - image: kamekamepon2/piper8container:latest
         imagePullPolicy: IfNotPresent
         name: piper8container
         terminationMessagePath: /dev/termination-log
