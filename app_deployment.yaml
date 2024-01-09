@@ -18,14 +18,16 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         env:
-        - name: SERVICE_PORT
-          value: "80"
-        - name: SERVICE_IP
-          value: "172.17.0.1"
-        - name: UNCHANGED_REFERENCE
-          value: "$(PROTOCOL)://$(SERVICE_IP):$(SERVICE_PORT)"
-        - name: PROTOCOL
-          value: "https"
+        - name: APP
+          value: "app.py"
+        - name: RABBITMQ_IP
+          value: "rabbitmq"
+        - name: RABBITMQ_USER
+          value: "guest"
+        - name: RABBITMQ_PASSWORD 
+          value: "guest"
+        - name: MSTEAMS_URL 
+          value: "https://dell.webhook.office.com/webhookb2/e0a540f3-e6bb-4273-83f9-e82877290ce8@945c199a-83a2-4e80-9f8c-5a91be5752dd/IncomingWebhook/8ab059ee2edd43a49cf1a684e145e888/767f097b-3df4-4cce-8ff8-b94533a5e92b"
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
