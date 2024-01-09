@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: p8pod
+  name: p8pod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: p8pod
+    spec:
+      containers:
+      - image: kamekamepon2/piper8container:0.1
+        imagePullPolicy: IfNotPresent
+        name: piper8container
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        env:
+        - name: SERVICE_PORT
+          value: "80"
+        - name: SERVICE_IP
+          value: "172.17.0.1"
+        - name: UNCHANGED_REFERENCE
+          value: "$(PROTOCOL)://$(SERVICE_IP):$(SERVICE_PORT)"
+        - name: PROTOCOL
+          value: "https"
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
