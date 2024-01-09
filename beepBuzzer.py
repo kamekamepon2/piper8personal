@@ -42,8 +42,10 @@ def callback(ch, method, properties, body):			#callback関数の作成
     ch.basic_ack(delivery_tag = method.delivery_tag)		#ackをする場合はコメントを外す。横から見るだけであればコメントアウトしたまま
 
 def consumer(q_name):
-    #pika_param = pika.ConnectionParameters(host=RabbitMQIP) 	#接続パラメータの指定,ポートはデフォルト 5672
-    pika_param = pika.ConnectionParameters(host=RabbitMQIP,credentials=pika.PlainCredentials(RabbitMQUser, RabbitMQPassword))
+    if RabbitMQUser == 'guest'
+      pika_param = pika.ConnectionParameters(host=RabbitMQIP) 	#接続パラメータの指定,ポートはデフォルト 5672
+    else:
+      pika_param = pika.ConnectionParameters(host=RabbitMQIP,credentials=pika.PlainCredentials(RabbitMQUser, RabbitMQPassword))
     connection = pika.BlockingConnection(pika_param)		#接続
     channel = connection.channel()					#チャネルの作成
     channel.queue_declare(queue=q_name)				#Queueの作成
