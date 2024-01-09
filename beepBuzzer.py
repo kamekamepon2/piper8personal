@@ -7,6 +7,7 @@ import sys
 args = sys.argv
 
 #RabbitMQIP='192.168.80.91'
+#RabbitMQIP='localhost'
 RabbitMQIP=args[1]
 
 def beepBuzzer():
