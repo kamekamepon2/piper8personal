@@ -8,8 +8,10 @@ args = sys.argv
 
 #RabbitMQIP='192.168.80.91'
 #RabbitMQIP='localhost'
-RabbitMQIP= args[1]
-TEAMS_WEB_HOOK_URL = args[2]
+RabbitMQIP=args[1]
+RabbitMQUser=args[2]
+RabbitMQPassword=args[3]
+TEAMS_WEB_HOOK_URL = args[4]
 
 def postMSTeams(body,title="default title"):
     myTeamsMessage = pymsteams.connectorcard(TEAMS_WEB_HOOK_URL)
