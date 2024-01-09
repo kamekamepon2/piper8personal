@@ -10,6 +10,11 @@ spec:
   selector:
     matchLabels:
       app: p8pod
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: p8pod
     spec:
       containers:
       - image: kamekamepon2/piper8container:latest
