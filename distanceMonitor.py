@@ -11,12 +11,14 @@ args = sys.argv
 #RabbitMQIP='192.168.80.91'
 #RabbitMQIP='localhost'
 RabbitMQIP=args[1]
+RabbitMQUser=args[2]
+RabbitMQPassword=args[3]
 
 Trigger = 16
 Echo = 18
 
 def postMessage(q_name,text='Hello World!'):
-    pika_param = pika.ConnectionParameters(host=RabbitMQIP) 	#接続パラメータの指定,ポートはデフォルト 5672
+    pika_param = pika.ConnectionParameters(host=RabbitMQIP,credentials=pika.PlainCredentials(RabbitMQUser, RabbitMQPassword)) 	#接続パラメータの指定,ポートはデフォルト 5672
     connection = pika.BlockingConnection(pika_param)		#接続
     channel = connection.channel()					#チャネルの作成
     channel.queue_declare(queue=q_name)				#Queueの作成
