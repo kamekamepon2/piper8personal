@@ -47,7 +47,7 @@ try:
     while True:
         d = checkdist()
         df = "%0.2f" %d
-        print ('Distance : %s m' %df)
+        print ('Distance: %s m' %df)
         jsonData={"D_Value": df}
         #print(json.dumps(jsonData))
         #print(json.loads(json.dumps(jsonData)))
