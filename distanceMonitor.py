@@ -18,7 +18,7 @@ Trigger = 16
 Echo = 18
 
 def postMessage(q_name,text='Hello World!'):
-    if RabbitMQUser == 'guest'
+    if RabbitMQUser == 'guest':
       pika_param = pika.ConnectionParameters(host=RabbitMQIP) 	#接続パラメータの指定,ポートはデフォルト 5672
     else:
       pika_param = pika.ConnectionParameters(host=RabbitMQIP,credentials=pika.PlainCredentials(RabbitMQUser, RabbitMQPassword))
