@@ -1,10 +1,12 @@
 import pika 
 import pymsteams
 import json
+import sys
 
-TEAMS_WEB_HOOK_URL = "https://dell.webhook.office.com/webhookb2/e0a540f3-e6bb-4273-83f9-e82877290ce8@945c199a-83a2-4e80-9f8c-5a91be5752dd/IncomingWebhook/8ab059ee2edd43a49cf1a684e145e888/767f097b-3df4-4cce-8ff8-b94533a5e92b"
-#RabbitMQIP='192.168.80.91'
-RabbitMQIP='localhost'
+args = sys.argv
+
+TEAMS_WEB_HOOK_URL = args[1]
+RabbitMQIP= args[2]
 
 def postMSTeams(body,title="default title"):
     myTeamsMessage = pymsteams.connectorcard(TEAMS_WEB_HOOK_URL)
