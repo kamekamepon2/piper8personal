@@ -5,8 +5,11 @@ import sys
 
 args = sys.argv
 
-TEAMS_WEB_HOOK_URL = args[1]
-RabbitMQIP= args[2]
+
+#RabbitMQIP='192.168.80.91'
+#RabbitMQIP='localhost'
+RabbitMQIP= args[1]
+TEAMS_WEB_HOOK_URL = args[2]
 
 def postMSTeams(body,title="default title"):
     myTeamsMessage = pymsteams.connectorcard(TEAMS_WEB_HOOK_URL)
