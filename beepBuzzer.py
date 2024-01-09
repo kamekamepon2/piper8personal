@@ -2,9 +2,12 @@ import pika
 import json
 import RPi.GPIO as GPIO
 import time
+import sys
+
+args = sys.argv
 
 #RabbitMQIP='192.168.80.91'
-RabbitMQIP='localhost'
+RabbitMQIP=args[1]
 
 def beepBuzzer():
     BZRPin = 11
