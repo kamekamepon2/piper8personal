@@ -47,7 +47,7 @@ def postMSTeams(body,title="default title"):
 def callback(ch, method, properties, body):			#callback関数の作成
     D_Value=json.loads(body)
     print("Received:",D_Value)
-    set_db(D_Value["D_Value"])
+    #set_db(D_Value["D_Value"])
     if float(D_Value["D_Value"]) < 1: 
         postMSTeams(body=D_Value["D_Value"])
         postMessage("B_COMMAND","trigger")
@@ -77,9 +77,9 @@ def postMessage(q_name,text='Hello World!'):
 
 
 ### Check Radis connection
-ret = check_db()
-if ret is None:                             # for debug                 
-    print("***** Failed check Radis *****")
-    exit(1)
+#ret = check_db()
+#if ret is None:                             # for debug                 
+#    print("***** Failed check Radis *****")
+#    exit(1)
 
 consumer("D_MONITOR")
