@@ -15,6 +15,7 @@ TEAMS_WEB_HOOK_URL=args[4]
 RedisHost="redis-12413.c54.ap-northeast-1-2.ec2.cloud.redislabs.com"
 RedisPort="12413"
 RedisPwd="6NCxHeoTSYJtRbfN4Nis8ui5EN5wK2gQ"
+RedisKey = "D_VALUE"
 
 
 def check_db():
