@@ -12,30 +12,7 @@ RabbitMQIP=args[1]
 RabbitMQUser=args[2]
 RabbitMQPassword=args[3]
 TEAMS_WEB_HOOK_URL=args[4]
-RedisHost="redis-12413.c54.ap-northeast-1-2.ec2.cloud.redislabs.com"
-RedisPort="12413"
-RedisPwd="6NCxHeoTSYJtRbfN4Nis8ui5EN5wK2gQ"
-RedisKey = "D_VALUE"
 
-
-def check_db():
-    ### Check Redis connection 
-    r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
-    print("Connected Radis...: " + RedisHost)
-    ### Check Redis Key
-    ret = r.get(RedisKey)
-    print (ret)                             ### for debug
-    if ret is None:                         # if no exist RedisKey                 
-        print("Failed Key: " + RedisKey)
-        return ret                          # Return Value
-    msg = str(ret.decode("utf-8"))
-    print("RedisKey:" + RedisKey + " KeyValue:" + msg)
-    return ret
-
-def set_db(msg):                            ### set data to Redis 
-    r = redis.Redis(host=RedisHost, port=RedisPort, password=RedisPwd, db=0)
-    r.set(RedisKey ,msg)                   
-    print("Updated Radis db=0")
 
 def postMSTeams(body,title="default title"):
     myTeamsMessage = pymsteams.connectorcard(TEAMS_WEB_HOOK_URL)
@@ -47,7 +24,6 @@ def postMSTeams(body,title="default title"):
 def callback(ch, method, properties, body):			#callback関数の作成
     D_Value=json.loads(body)
     print("Received:",D_Value)
-    #set_db(D_Value["D_Value"])
     if float(D_Value["D_Value"]) < 1: 
         postMSTeams(body=D_Value["D_Value"])
         postMessage("B_COMMAND","trigger")
@@ -75,11 +51,5 @@ def postMessage(q_name,text='Hello World!'):
     channel.queue_declare(queue=q_name)				#Queueの作成
     channel.basic_publish(exchange='', routing_key=q_name, body=text)
 
-
-### Check Radis connection
-#ret = check_db()
-#if ret is None:                             # for debug                 
-#    print("***** Failed check Radis *****")
-#    exit(1)
 
 consumer("D_MONITOR")
