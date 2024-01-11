@@ -12,6 +12,9 @@ RabbitMQIP=args[1]
 RabbitMQUser=args[2]
 RabbitMQPassword=args[3]
 TEAMS_WEB_HOOK_URL = args[4]
+RedisHost = "redis-12413.c54.ap-northeast-1-2.ec2.cloud.redislabs.com"
+RedisPort = ":2413"
+RedisPwd = "6NCxHeoTSYJtRbfN4Nis8ui5EN5wK2gQ"
 
 def postMSTeams(body,title="default title"):
     myTeamsMessage = pymsteams.connectorcard(TEAMS_WEB_HOOK_URL)
